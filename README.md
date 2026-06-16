@@ -86,7 +86,7 @@ Ponto de entrada da aplicação.
 
 ## Novas tarefas:
 * Kaique: Atualizar menu, com base no swicth da main
-* Charles: EditarComentario: Não permitir editar comentario raiz
+* Charles: EditarComentario: Não permitir editar comentario raiz, em lerID(), colocar mengsaem: "Digitar Id"
 
 
   
