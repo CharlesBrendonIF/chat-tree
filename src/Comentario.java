@@ -39,4 +39,15 @@ public class Comentario {
     public int getQuantidadeRespostas() {
         return respostas != null ? respostas.size() : 0;
     }
+
+    public boolean isRaiz(){
+        return this.pai==null;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("[ID: %d] %s: \\\"%s\\\"%n\",\n" +
+                "                        filho.getId(), filho.getAutor(),\n" +
+                "                        filho.getTexto().length() > 30 ? filho.getTexto().substring(0, 30) + \"...\" : filho.getTexto()");
+    }
 }

@@ -151,6 +151,8 @@ public class ForumService {
                     System.out.println("Comando inválido.");
             }
         }
+
+
     }
 
     /**
@@ -169,5 +171,10 @@ public class ForumService {
                 System.out.println("ID inválido. Digite um número inteiro.");
             }
         }
+    }
+
+    public void pressionarEnterParaContinuar(Scanner sc) {
+        System.out.println("\nPressione ENTER para continuar...");
+        sc.nextLine();
     }
 }

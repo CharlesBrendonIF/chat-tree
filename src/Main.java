@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -7,16 +6,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
 
-        String escolha="";
-        UI.exibirMenuInicial();
+
+
         ComentarioTree ct= new ComentarioTree();
-        ForumService s= new ForumService(ct,sc);
         Comentario comentarioAtual= ct.getRaiz();
+
+        ForumService s= new ForumService(ct,sc);
+
+        String comando="";
+
+        UI.exibirTutorial();
         while(comentarioAtual!=null){
-
-            UI.exibirComentario(comentarioAtual,ct.obterCaminho(comentarioAtual));
-
-            String comando = s.lerComando(sc);
+            if(comentarioAtual.isRaiz()){
+                UI.exibirConvrsaPrincipal(ct);
+            }else{
+                UI.exibirComentario(comentarioAtual, ct.obterCaminho(comentarioAtual));
+            }
+            comando = s.lerComando(sc);
 
             switch(comando.toUpperCase()){
 
@@ -32,7 +38,7 @@ public class Main {
                     comentarioAtual =s.deletarComentarioAtual(comentarioAtual);
                     break;
 
-                case "VER":
+                case "V":
 
                     int id =s.lerId(sc);
                     Comentario destino = ct.buscarPorId(id);
@@ -40,11 +46,11 @@ public class Main {
                     if (destino != null)
                         comentarioAtual = destino;
                     else{
-                        System.out.println("Não exixte u comentario com esse ID");
+                        System.out.println("Não exixte um comentario com esse ID");
                     }
                     break;
 
-                case "B":
+                case "B"://Voltar para comentario pai
 
                     if(comentarioAtual.getPai()!=null)
                         comentarioAtual = comentarioAtual.getPai();
@@ -64,21 +70,25 @@ public class Main {
                     break;
 
                 case "U":
-            //        UI.exibirComentario(s.comentariosDoAutor());
+            //        UI.exibirComentario(ct.comentariosDoAutor());
                     break;
-                case "VI":
-
+                case "B0"://Voltar ao inicio/comentario raiz
+                    comentarioAtual=ct.getRaiz();
                     break;
 
-                case "S":
-
+                case "S"://encerrar o programa
+                    comentarioAtual=null;
                     break;
                 default:
 
-
+                    System.out.println("Comando Invalido");
             }
 
+            s.pressionarEnterParaContinuar(sc);
             UI.limparTela();
         }
+
+        System.out.println("Encerrando o chat...");
+        s.pressionarEnterParaContinuar(sc);
     }
 }

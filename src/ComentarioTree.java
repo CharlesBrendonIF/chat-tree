@@ -6,7 +6,7 @@ class ComentarioTree {
     private Comentario raiz;
 
     public ComentarioTree(){
-        raiz = new Comentario("", "DISCUSSÃO", null);
+        raiz = new Comentario("", "==CONVERSA PRINCIPAL==", null);
     }
 
     public Comentario getRaiz() {
@@ -74,6 +74,7 @@ class ComentarioTree {
     public String gerarArvoreTexto();
 
     public LinkedList<Comentario> comentariosDoAutor(String nomeDoAutor){
+    //Deve guardar numa lista os comentarios do nome do autor passado no parametro, se n achar nenhum, retorna null
 
 
     }*/

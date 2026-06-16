@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 public class UI {
@@ -7,15 +8,36 @@ public class UI {
         System.out.printf("Caminho: %s%n", caminho);
         System.out.printf("ID: %d%n", comentario.getId());
         System.out.printf("Autor: %s%n", comentario.getAutor());
-        System.out.printf("Texto:%n%s%n%n", comentario.getTexto());
+        System.out.printf("Texto:%s%n", comentario.getTexto());
         System.out.printf("N° de Respostas: %d%n", comentario.getQuantidadeRespostas());
 
         System.out.println("=============================================================");
 
         // Comentários filhos diretos
         if (comentario.getQuantidadeRespostas() > 0) {
-            System.out.println("Respostas diretas (Filhos):");
+            System.out.println("Respostas diretas :");
             for (Comentario filho : comentario.getRespostas()) {
+                System.out.printf("  -> " + filho);
+            }
+            System.out.println("=============================================================");
+        }
+    }
+
+    public static void exibirComentarios(LinkedList<Comentario> listaComentarios){
+        /*fazer algo semelhante a impressão de comentarios filhos. Fazer caso parametrro seja null e falar que esse
+        autor n existe*/
+
+    }
+    public static void exibirConvrsaPrincipal(ComentarioTree ct){
+        Comentario raiz=ct.getRaiz();
+        System.out.printf("Texto:%s%n", raiz.getTexto());
+        System.out.printf("Total de comentarios do Forum: %d%n", 0/*ct.contarComentarios()*/);
+        System.out.println("=============================================================");
+        System.out.printf("N° de Comentarios: %d%n", raiz.getQuantidadeRespostas());
+        // Comentários filhos diretos
+        if (raiz.getQuantidadeRespostas() > 0) {
+            System.out.println("Comentarios :");
+            for (Comentario filho : raiz.getRespostas()) {
                 System.out.printf("  -> [ID: %d] %s: \"%s\"%n",
                         filho.getId(), filho.getAutor(),
                         filho.getTexto().length() > 30 ? filho.getTexto().substring(0, 30) + "..." : filho.getTexto());
@@ -42,7 +64,7 @@ public class UI {
         System.out.println("=============================================================");
     }
 
-    public static void exibirMenuInicial(){
+    public static void exibirTutorial(){
         System.out.println("=============================================================");
         System.out.println("    SISTEMA DE FÓRUM EM ÁRVORE (DISCUSSÃO ENCADEADA)         ");
         System.out.println("=============================================================");
@@ -99,5 +121,7 @@ public class UI {
         System.out.printf("O usuário '%s' publicou um total de %d comentário(s).%n", autor, total);
         System.out.println("=============================================================");
     }
+
+
 
 }
