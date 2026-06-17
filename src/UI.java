@@ -13,55 +13,54 @@ public class UI {
 
         imprimirLinhaSeparadora();
 
-        // Comentários filhos diretos
-        if (comentario.getQuantidadeRespostas() > 0) {
-            System.out.println("Respostas diretas :");
-            listarRespostasDiretas(comentario.getRespostas());
+        mostrarRespostas(comentario,"     ");
+
+    }
+
+    private static void mostrarRespostas(Comentario c, String espaco){
+        if(c.getQuantidadeRespostas()>0){
+            listarRespostas(c, espaco);
+        }else{
+            System.out.println("--Não há comentarios--");
         }
     }
 
-    public static void exibirListaComentarios(LinkedList<Comentario> listaComentarios){
-        imprimirLinhaSeparadora();
-        System.out.println("RESULTADO DA BUSCA DE COMENTÁRIOS");
-        imprimirLinhaSeparadora();
+    private static void listarRespostas(Comentario comentario, String espaco){
+        if(comentario.getQuantidadeRespostas()>0){
+            for (int i = 0; i < comentario.getRespostas().size(); i++) {
+                Comentario filho = comentario.getRespostas().get(i);
 
-        // Validação de lista nula ou sem elementos
-        if (listaComentarios == null || listaComentarios.isEmpty()) {
-            System.out.println("Erro: Este autor não existe ou não possui comentários publicados.");
-            imprimirLinhaSeparadora();
-            return;
-        }
+                String marcador =
+                        (i == comentario.getRespostas().size() - 1)
+                                ? "└── "
+                                : "├── ";
 
-        // Imprime os comentários
-        for (Comentario c : listaComentarios) {
-            System.out.printf("[ID: %d] Autor: %s%n", c.getId(), c.getAutor());
-            System.out.printf("Texto: %s%n", c.getTexto());
+                System.out.println(espaco + marcador + filho);
 
-            // Mostra o Id do pai (caso exista)
-            if (c.getPai() != null && c.getPai().getAutor() != null && !c.getPai().getAutor().isEmpty()) {
-                System.out.printf("Em resposta a: %s (ID: %d)%n", c.getPai().getAutor(), c.getPai().getId());
-            } else if (c.getPai() != null) {
-                System.out.println("Em resposta à raiz da discussão.");
+                if (!filho.getRespostas().isEmpty()) {
+                    mostrarRespostas(filho, espaco + "│   ");
+                }
             }
-
-            imprimirLinhaSeparadora();
         }
-
-        System.out.printf("Total de comentários encontrados nesta listagem: %d%n", listaComentarios.size());
-        imprimirLinhaSeparadora();
+        System.out.println();
     }
 
     public static void exibirConvrsaPrincipal(ComentarioTree ct){
-        Comentario raiz = ct.getRaiz();
-        System.out.printf("Texto:%s%n", raiz.getTexto());
+        Comentario raiz=ct.getRaiz();
+        System.out.println( raiz.getTexto());
         System.out.printf("Total de comentarios do Forum: %d%n", 0/*ct.contarComentarios()*/);
         imprimirLinhaSeparadora();
         System.out.printf("N° de Comentarios: %d%n", raiz.getQuantidadeRespostas());
-        // Comentários filhos diretos
-        if (raiz.getQuantidadeRespostas() > 0) {
-            System.out.println("Comentarios :");
-            listarRespostasDiretas(raiz.getRespostas());
-        }
+
+        System.out.println(raiz.getTexto());
+        mostrarRespostas(raiz,"     ");
+
+    }
+
+    public static void exibirComentariosDoAutor(String nome, LinkedList<Comentario> listaComentarios){
+        /*fazer algo semelhante a impressão de comentarios filhos. Fazer caso parametrro seja null e falar que esse
+        autor n existe*/
+
     }
 
     public static void exibirMenu(){
