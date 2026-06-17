@@ -45,7 +45,7 @@ public class UI {
         System.out.println();
     }
 
-    public static void exibirConvrsaPrincipal(ComentarioTree ct){
+    public static void exibirConversaPrincipal(ComentarioTree ct){
         Comentario raiz=ct.getRaiz();
         System.out.printf("Total de comentarios do Forum: %d%n", ct.contarComentarios());
         System.out.println( raiz.getTexto() + " (ID: "+raiz.getId()+")");
@@ -145,27 +145,9 @@ public class UI {
         }
     }
 
-    public static void exibirTotalComentarios(int total) {
-        imprimirLinhaSeparadora();
-        System.out.printf("Total de comentários na árvore: %d%n", total);
-        imprimirLinhaSeparadora();
-    }
-
-    public static void exibirTotalPorAutor(String autor, int total) {
-        imprimirLinhaSeparadora();
-        System.out.printf("O usuário '%s' publicou um total de %d comentário(s).%n", autor, total);
-        imprimirLinhaSeparadora();
-    }
-
     private static void imprimirLinhaSeparadora() {
         System.out.println("=============================================================");
 
     }
 
-    private static void listarRespostasDiretas(List<Comentario> respostas) {
-        for (Comentario child : respostas) {
-            System.out.println("  -> " + child);
-        }
-        imprimirLinhaSeparadora();
-    }
 }

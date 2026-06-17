@@ -14,7 +14,7 @@ public class Main {
         UI.exibirTutorial();
         while(comentarioAtual!=null){
             if(comentarioAtual.isRaiz()){
-                UI.exibirConvrsaPrincipal(ct);
+                UI.exibirConversaPrincipal(ct);
             }else{
                 UI.exibirComentario(comentarioAtual, ct.obterCaminho(comentarioAtual));
             }
