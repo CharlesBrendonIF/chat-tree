@@ -79,16 +79,15 @@ Ponto de entrada da aplicação.
 
 ## Equipe e Divisão de Responsabilidades
 
-| Integrante                                | GitHub                      | Responsabilidades                                                                                                                                                                              |
-| ----------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ana Clara Marinho Viana                   | @anaclaramarinhoviana77-alt | Implementação da camada de serviços (`ForumService`) e das regras de negócio do sistema.                                                                                                       |
-| Charles Brendon Silva Suzart              | @CharlesBrendonIF           | Desenvolvimento da classe `Comentario`, incluindo atributos, comportamentos e representação dos comentários.                                                                                   |
-| Emanuel Fonseca Nogueira                  | @Nuillexe                   | Scrum Master e Gerente de Projeto, responsável pelo planejamento, organização das atividades, definição da arquitetura do sistema, integração dos módulos e acompanhamento do desenvolvimento. |
-| Kaique Santos Moreira                     | @KaiqueFullDev              | Implementação da estrutura de árvore (`ComentarioTree`) e das operações de manipulação dos comentários.                                                                                        |
-| Maria Eduarda De Oliveira Ferreira Santos | @eduardasxntos              | Desenvolvimento da interface textual (`UI`) e apresentação das informações ao usuário.                                                                                                         |
-
-</table>
-
+| Integrante                                | GitHub                      | Responsabilidades                                                                                                                                                                                                                                               |
+| ----------------------------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ana Clara Marinho Viana                   | @anaclaramarinhoviana77-alt | Implementação dos métodos de percurso da árvore, com foco na geração da representação textual completa da estrutura de comentários (`gerarArvoreTexto`).                                                                                                        |
+| Charles Brendon Silva Suzart              | @CharlesBrendonIF           | Desenvolvimento da classe `Comentario`, incluindo finalização da modelagem da entidade, getters, setters e revisão geral da classe.                                                                                                                             |
+| Emanuel Fonseca Nogueira                  | @Nuillexe                   | Scrum Master e Gerente de Projeto. Responsável pelo planejamento do projeto, organização do repositório, criação de branches, revisão de Pull Requests, resolução de conflitos, implementação da classe `Main`, testes finais e integração de todos os módulos. |
+| Indaiá                                    |                             | Implementação dos métodos de folhas e estatísticas da árvore, incluindo `listarFolhas()` e `contarComentarios()`.                                                                                                                                               |
+| Kaique Santos Moreira                     | @KaiqueFullDev              | Implementação da interface textual (`UI`), incluindo exibição de comentários, menus, folhas, árvore de comentários e demais funcionalidades de interação com o usuário.                                                                                         |
+| Maria Eduarda De Oliveira Ferreira Santos | @eduardasxntos              | Implementação da classe `ComentarioTree`, com foco nos métodos de remoção de comentários, obtenção do caminho de navegação e seleção (`removerComentario()`, `obterCaminho()` e `comentariosDoAutor`).                                                                                         |
+| Pedro                                     |                             | Implementação da classe `ForumService`, incluindo criação, edição e remoção de comentários, navegação entre comentários e leitura de comandos do usuário.                                                                                                       |
 
 </table>
 
