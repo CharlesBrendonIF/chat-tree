@@ -47,12 +47,8 @@ public class UI {
 
     public static void exibirConvrsaPrincipal(ComentarioTree ct){
         Comentario raiz=ct.getRaiz();
-        System.out.println( raiz.getTexto());
-        System.out.printf("Total de comentarios do Forum: %d%n", 0/*ct.contarComentarios()*/);
-        imprimirLinhaSeparadora();
-        System.out.printf("N° de Comentarios: %d%n", raiz.getQuantidadeRespostas());
-
-        System.out.println(raiz.getTexto());
+        System.out.printf("Total de comentarios do Forum: %d%n", ct.contarComentarios());
+        System.out.println( raiz.getTexto() + " (ID: "+raiz.getId()+")");
         mostrarRespostas(raiz,"     ");
 
     }
@@ -91,6 +87,7 @@ public class UI {
         imprimirLinhaSeparadora();
 
         exibirMenu();
+        System.out.println();
     }
 
     public static void exibirFolhas(List<Comentario> folhas){
@@ -139,6 +136,7 @@ public class UI {
 
     private static void imprimirLinhaSeparadora() {
         System.out.println("=============================================================");
+
     }
 
     private static void listarRespostasDiretas(List<Comentario> respostas) {

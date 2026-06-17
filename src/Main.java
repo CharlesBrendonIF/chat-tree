@@ -58,7 +58,7 @@ public class Main {
                     break;
 
                 case "F":
-        //            UI.exibirFolhas(ct.listarFolhas());
+                    UI.exibirFolhas(ct.listarFolhas());
                     break;
 
                 case "A":
@@ -72,7 +72,7 @@ public class Main {
                 case "U":
                     System.out.println("Digite o nome de quem vc quer ver todos os comentarios");
                     String nome=sc.nextLine();
-                    //UI.exibirComentariosDoAutor(nome, ct.comentariosDoAutor(nome));
+                    UI.exibirComentariosDoAutor(nome, ct.comentariosDoAutor(nome));
                     break;
                 case "B0"://Voltar ao inicio/comentario raiz
                     comentarioAtual=ct.getRaiz();

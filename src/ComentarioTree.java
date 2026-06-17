@@ -123,16 +123,52 @@ class ComentarioTree {
     }
 
 
-   /* public List<Comentario> listarFolhas();
+    public List<Comentario> listarFolhas() {
+        List<Comentario> folhas = new LinkedList<>();
+        listarFolhasRecursivo(raiz, folhas);
+        return folhas;
+    }
 
-    public int contarComentarios();
+    private void listarFolhasRecursivo(Comentario atual, List<Comentario> folhas) {
+        if (atual == null) {
+            return;
+        }
 
-    public LinkedList<Comentario> comentariosDoAutor(String nomeDoAutor){
-    //Deve guardar numa lista os comentarios do nome do autor passado no parametro, se n achar nenhum, retorna null
+        // Se o nó atual não possui respostas e não é a raiz ("FORUM"), ele é uma folha
+        if (atual.getRespostas().isEmpty() && !atual.isRaiz()) {
+            folhas.add(atual);
+        }
 
+        // Percorre cada filho chamando a função recursivamente
+        for (Comentario filho : atual.getRespostas()) {
+            listarFolhasRecursivo(filho, folhas);
+        }
+    }
 
-    }*/
+    /**
+     * Retorna a quantidade total de comentários da árvore (excluindo a raiz "FORUM").
+     */
+    public int contarComentarios() {
+        int total = contarComentariosRecursivo(raiz);
+        return total - 1; // Remove o nó inicial "FORUM" da contagem final
+    }
+
+    private int contarComentariosRecursivo(Comentario atual) {
+        if (atual == null) {
+            return 0;
+        }
+
+        int contador = 1; // Conta o nó atual
+
+        // Soma recursivamente o contador de cada filho
+        for (Comentario filho : atual.getRespostas()) {
+            contador += contarComentariosRecursivo(filho);
+        }
+
+        return contador;
+    }
 }
+
 
 /*
 * Responsabilidades
